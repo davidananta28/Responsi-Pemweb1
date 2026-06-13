@@ -1,0 +1,38 @@
+/* =========================================
+   FOOTER STYLES
+========================================= */
+footer {
+    background-color: var(--bg-dark);
+    border-top: 1px solid var(--border-dark);
+    padding: 40px 5%;
+    text-align: center;
+    margin-top: auto; /* Memastikan footer selalu di bawah jika konten sedikit */
+}
+
+/* 1. Mengatur wadah tautan logo footer */
+footer .logo {
+    display: inline-block;
+    margin-bottom: 15px;
+    text-decoration: none;
+}
+
+/* KODE BARU: Mengatur Ukuran Foto Logo di Footer */
+footer .logo img {
+    height: 60px; /* <--- UBAH ANGKA INI untuk membesarkan/mengecilkan logo khusus di footer */
+    width: auto;
+    opacity: 0.6; /* Membuat logo agak redup/pudar secara default */
+    transition: 0.3s ease; /* Membuat efek perubahan opacity menjadi halus */
+}
+
+/* KODE BARU: Efek saat kursor diarahkan ke logo footer (Hover) */
+footer .logo:hover img {
+    opacity: 1; /* Logo menyala terang saat di-hover */
+}
+
+footer p {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: #4A4D4F; /* Abu-abu gelap */
+    letter-spacing: 1px;
+    margin: 0;
+}

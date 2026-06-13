@@ -1,0 +1,487 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;600&family=Manrope:wght@300;400;600&display=swap');
+
+:root {
+    --bg-dark: #0D0D0D;
+    --bg-light: #1A1A1A;
+    --accent: #C5A55A;
+    --accent-dark: #E4C377;
+    --text-light: #F0E8D0;
+    --text-gray: #8A8D8F;
+    --border-dark: #2E2E2E;
+    --font-heading: 'Cinzel', serif;
+    --font-sub: 'Cormorant Garamond', serif;
+    --font-body: 'Manrope', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Tambahan agar footer selalu nempel di bawah */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Common UI */
+.page-section {
+    padding: 60px 5%;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--border-dark);
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-family: var(--font-heading);
+    color: var(--accent);
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.view-all {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.view-all:hover {
+    color: var(--accent);
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    background: rgba(13, 13, 13, 0.5);
+}
+
+.btn-primary:hover {
+    background: var(--accent);
+    color: var(--bg-dark);
+}
+
+.grid-container {
+    display: grid;
+    gap: 30px;
+}
+
+.grid-5 {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Cards */
+.card {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent;
+    display: block;
+    text-decoration: none;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    display: block;
+}
+
+.card-title {
+    padding: 12px 8px;
+    text-align: center;
+    background-color: var(--bg-light);
+}
+
+.card-title h3 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Update jarak section utama agar tidak terlalu renggang */
+.page-section {
+    padding: 30px 5%;
+}
+
+/* Kotak Abu-abu Gelap baru untuk Faksi & Film */
+.section-box {
+    background-color: var(--bg-light); /* Menggunakan warna #1A1A1A dari root kamu */
+    padding: 40px;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Opsional: memberi sedikit bayangan agar elegan */
+}
+
+/* Supaya garis di bawah judul sesuai gambar */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--border-dark);
+    padding-bottom: 15px;
+    margin-bottom: 30px; /* Diperkecil sedikit jaraknya */
+}
+
+/* Hero Section */
+/* Hero Section */
+.hero {
+    min-height: 100vh; /* Ubah dari height: 80vh; menjadi ini */
+    /* Baris background di CSS ini sebenarnya tidak masalah dibiarkan karena akan ditimpa oleh inline-style di HTML kamu */
+    background: linear-gradient(to right, rgba(13, 13, 13, 0.9) 0%, rgba(13, 13, 13, 0.4) 50%, rgba(13, 13, 13, 0.8) 100%), url('https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=1920&auto=format&fit=crop') center/cover;
+    display: flex;
+    align-items: center;
+    padding: 100px 5%; /* Ubah padding agar ada jarak napas di atas dan bawah, tidak terlalu mepet header/bawah */
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    line-height: 1.2;
+    color: var(--accent);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.hero-content p {
+    font-family: var(--font-sub);
+    font-size: 18px;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+/* --- Efek Smooth untuk Info Selengkapnya --- */
+/* --- Efek Smooth untuk Info Selengkapnya --- */
+.text-expandable {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden; /* Mencegah teks bocor di awal */
+    transition: max-height 0.6s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.text-expandable.show {
+    max-height: 400px; /* Angka ini digedein supaya teks panjang tidak terpotong */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- NEW: Film Detail Page --- */
+.film-detail-hero {
+    height: 70vh;
+    background: linear-gradient(to right, rgba(13, 13, 13, 0.9) 0%, rgba(13, 13, 13, 0.1) 50%, rgba(13, 13, 13, 0.8) 100%), url('https://placehold.co/1920x1080/1A1A1A/C5A55A?text=Iron+Throne+Background') center/cover;
+    display: flex;
+    align-items: flex-end;
+    padding: 5%;
+}
+
+.film-title-large {
+    font-family: var(--font-heading);
+    font-size: 64px;
+    color: var(--accent);
+    line-height: 1.1;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.9);
+}
+
+.btn-gold {
+    background-color: var(--accent);
+    color: var(--bg-dark);
+    padding: 15px 30px;
+    font-weight: bold;
+    font-family: var(--font-body);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: 0.3s;
+    border: 1px solid var(--accent);
+}
+
+.btn-gold:hover {
+    background-color: transparent;
+    color: var(--accent);
+}
+
+.meta-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    padding: 40px 5%;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.meta-tags {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: var(--font-body);
+}
+
+.meta-tags .badge {
+    border: 1px solid var(--text-gray);
+    padding: 3px 8px;
+    font-size: 12px;
+    color: var(--text-gray);
+    border-radius: 2px;
+}
+
+.meta-tags .rating {
+    color: var(--accent);
+}
+
+.meta-warning {
+    color: var(--text-gray);
+    font-size: 14px;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.meta-synopsis {
+    font-size: 16px;
+    line-height: 1.8;
+    font-family: var(--font-sub);
+}
+
+.meta-info-list p {
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: var(--text-gray);
+}
+
+.meta-info-list span {
+    color: var(--text-light);
+}
+
+.episodes-section {
+    padding: 40px 5%;
+}
+
+.episodes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-dark);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.episodes-header h3 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+}
+
+.season-select {
+    background: transparent;
+    color: var(--text-light);
+    border: 1px solid var(--border-dark);
+    padding: 8px 15px;
+    font-family: var(--font-body);
+    outline: none;
+}
+
+.season-select option {
+    background: var(--bg-light);
+}
+
+.ep-warning-banner {
+    border: 1px solid var(--border-dark);
+    padding: 15px;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.ep-warning-banner .badge {
+    border: 1px solid var(--text-gray);
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+.ep-warning-banner p {
+    font-size: 12px;
+    color: var(--text-gray);
+    margin: 0;
+}
+
+.episode-item {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-dark);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.episode-item:hover {
+    background-color: rgba(26, 26, 26, 0.5);
+}
+
+.ep-num {
+    font-size: 24px;
+    color: var(--text-gray);
+    width: 30px;
+    font-family: var(--font-heading);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ep-thumb {
+    width: 200px;
+    height: 110px;
+    background-color: #242730;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.ep-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ep-title-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.ep-title-row h4 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.ep-title-row span {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.ep-desc {
+    font-size: 13px;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* Responsive Updates */
+@media (max-width: 1024px) {
+
+    .grid-5,
+    .grid-4 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .film-title-large {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .grid-5,
+    .grid-4,
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .meta-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        margin-bottom: 20px;
+    }
+
+    .ep-thumb {
+        width: 120px;
+        height: 70px;
+    }
+
+    .episode-item {
+        padding: 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .grid-5,
+    .grid-4,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .episode-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .ep-num {
+        display: none;
+    }
+
+    .ep-thumb {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+    }
+}

@@ -1,0 +1,74 @@
+/* Hero Detail */
+.film-detail-hero {
+    height: 70vh; /* Tinggi area banner */
+    background-size: cover; /* Agar gambar memenuhi area */
+    background-position: top center; /* Fokuskan gambar ke tengah atas */
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center; /* Posisikan teks ke tengah secara vertikal */
+    padding-left: 5%; /* Jarak teks dari kiri */
+}
+
+.film-title-large {
+    font-family: var(--font-heading);
+    color: var(--accent);
+    font-size: 56px;
+    margin-bottom: 20px;
+}
+
+/* Episode List */
+.episode-item {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    border-bottom: 1px solid #222;
+}
+
+.ep-thumb {
+    width: 200px;
+    height: 112px;
+    background: #222;
+}
+
+.ep-info h4 {
+    color: var(--text-main);
+    margin-bottom: 5px;
+}
+
+
+
+/* --- Tambahkan ke assets/css/film-detail.css --- */
+
+/* --- Atur Tinggi Area Episode --- */
+.episode-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Jarak antar episode */
+    
+    /* Atur tinggi maksimal agar pas 3 episode. 
+       (1 episode sekitar ~170px + gap. 3 episode = sekitar 560px - 580px).
+       Silakan naik-turunkan angka 580px ini jika di layarmu kurang pas 3 episode. */
+    max-height: 580px; 
+    
+    overflow-y: auto; /* Memunculkan scrollbar jika konten melebihi max-height */
+    padding-right: 15px; /* Memberi ruang agar teks tidak tertimpa scrollbar */
+}
+
+/* --- Opsional: Mempercantik tampilan Scrollbar agar tema GoT --- */
+.episode-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.episode-list::-webkit-scrollbar-track {
+    background: #1A1A1A; /* Warna latar scrollbar */
+    border-radius: 4px;
+}
+
+.episode-list::-webkit-scrollbar-thumb {
+    background: #C5A55A; /* Warna emas/gold untuk scrollbar */
+    border-radius: 4px;
+}
+
+.episode-list::-webkit-scrollbar-thumb:hover {
+    background: #A3874B; /* Warna gold lebih gelap saat di-hover */
+}

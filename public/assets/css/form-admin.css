@@ -1,0 +1,252 @@
+/* =========================================
+   FORM ADMIN STYLES (GOT MASTER THEMING)
+========================================= */
+
+.form-admin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: calc(100vh - 140px);
+    background-color: var(--bg-dark);
+}
+
+.form-admin-card {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-dark);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px; /* Dibuat sedikit lebih lebar agar input teks terasa lega */
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+}
+
+.form-admin-header {
+    text-align: center;
+    margin-bottom: 35px;
+    border-bottom: 1px solid var(--border-dark);
+    padding-bottom: 20px;
+}
+
+.form-admin-header h2 {
+    font-family: var(--font-heading);
+    color: var(--accent);
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+}
+
+.form-admin-header p {
+    font-size: 13px;
+    color: var(--text-gray);
+}
+
+/* --- MEDIA UPLOAD AREA --- */
+.upload-zone-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+    background-color: rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px dashed var(--border-dark);
+}
+
+.form-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-gray);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* Container khusus pratinjau poster (Vertikal) */
+.poster-preview-container {
+    position: relative;
+    width: 130px;
+    height: 190px;
+    margin-bottom: 12px;
+}
+
+#poster-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+/* Container khusus pratinjau sigil (Kotak/Symmetric) */
+.sigil-preview-container {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 12px;
+}
+
+#sigil-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: 1px solid var(--border-dark);
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+}
+
+/* Badge overlay tombol upload */
+.btn-upload-badge {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent);
+    color: var(--bg-dark);
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: 0.2s;
+}
+
+.btn-upload-badge:hover {
+    background-color: var(--accent-dark);
+    transform: translateX(-50%) scale(1.05);
+}
+
+.upload-note {
+    font-size: 11px;
+    color: var(--text-gray);
+    margin-top: 5px;
+}
+
+/* --- STRUCTURE INPUT & GRID --- */
+.admin-main-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-gray);
+    font-weight: 600;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    color: var(--text-light);
+    font-family: var(--font-body);
+    font-size: 14px;
+    transition: 0.3s;
+    outline: none;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    border-color: var(--accent);
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 8px rgba(197, 165, 90, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical; /* User hanya boleh menarik tinggi ke bawah */
+}
+
+/* Dropdown styling */
+.form-group select option {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+}
+
+/* Grid layout untuk isian berdampingan */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* --- ACTION BUTTONS --- */
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    border-top: 1px solid var(--border-dark);
+    padding-top: 25px;
+}
+
+.btn-cancel, .btn-submit {
+    padding: 14px 24px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    text-align: center;
+    flex: 1;
+}
+
+.btn-cancel {
+    background-color: transparent;
+    border: 1px solid var(--border-dark);
+    color: var(--text-gray);
+}
+
+.btn-cancel:hover {
+    border-color: #d9534f;
+    color: #d9534f;
+    background-color: rgba(217, 83, 79, 0.02);
+}
+
+.btn-submit {
+    background-color: var(--accent);
+    border: 1px solid var(--accent);
+    color: var(--bg-dark);
+    font-family: var(--font-body);
+}
+
+.btn-submit:hover {
+    background-color: var(--accent-dark);
+    border-color: var(--accent-dark);
+    box-shadow: 0 4px 15px rgba(197, 165, 90, 0.4);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 600px) {
+    .form-admin-card {
+        padding: 25px 20px;
+    }
+    .form-grid-2 {
+        grid-template-columns: 1fr; /* Memisahkan grid menjadi susunan tunggal di layar kecil */
+        gap: 20px;
+    }
+    .form-actions {
+        flex-direction: column-reverse; /* Tombol batal pindah ke bawah tombol simpan pada HP */
+        gap: 12px;
+    }
+}

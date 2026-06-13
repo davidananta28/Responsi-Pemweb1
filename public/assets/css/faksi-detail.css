@@ -1,0 +1,294 @@
+/* ==========================================================================
+   FAKSI DETAIL STYLES - FULL MERGED SYSTEM
+   ========================================================================== */
+
+.faksi-detail-container {
+    background-color: #0D0D0D;
+    color: #F0E8D0;
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+/* =========================================
+   1. HERO BANNER SECTION (FULL BACKGROUND)
+   ========================================= */
+.faksi-hero {
+    position: relative;
+    padding: 90px 8%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid #2E2E2E;
+    
+    /* Memasang gambar langsung sebagai background penuh */
+    background-image: url('../img/background-kursi.png'); 
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center right; 
+}
+
+/* Lapisan Gelap (Overlay) */
+.faksi-hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #0D0D0D 35%, rgba(13, 13, 13, 0.85) 70%, rgba(13, 13, 13, 0.4) 100%),
+                linear-gradient(180deg, rgba(22, 22, 22, 0.5) 0%, #0D0D0D 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Memastikan konten utama berdiri di atas background */
+.faksi-hero-content {
+    position: relative;
+    z-index: 2; 
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+}
+
+/* Kotak Logo Faksi */
+.faksi-logo-wrapper {
+    flex-shrink: 0;
+    width: 220px;
+    height: 220px;
+    background-color: rgba(26, 26, 26, 0.65);
+    backdrop-filter: blur(10px); /* Efek Kaca */
+    border: 1px solid #C5A55A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.8);
+    padding: 25px;
+}
+
+.faksi-main-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Informasi Faksi */
+.faksi-info { flex: 1; }
+
+.faksi-type {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #8A8D8F;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.faksi-title {
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
+    color: #C5A55A;
+    margin: 0 0 5px 0;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.faksi-motto {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: #8A8D8F;
+    margin: 0 0 25px 0;
+    letter-spacing: 1px;
+}
+
+.faksi-description p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #8A8D8F;
+    margin-bottom: 15px;
+    max-width: 800px;
+}
+
+/* Grid Metadata Singkat */
+.faksi-meta-grid {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+    border-top: 1px solid #2E2E2E;
+    padding-top: 20px;
+    max-width: 800px;
+}
+.meta-item { display: flex; flex-direction: column; gap: 5px; }
+.meta-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    color: #8A8D8F;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+.meta-value {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: #C5A55A;
+    font-weight: 600;
+}
+
+/* =========================================
+   2. MEMBERS SECTION (ORANG-ORANG)
+   ========================================= */
+.faksi-members-section {
+    padding: 60px 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Memaksa header ke tengah sempurna */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+    width: 100%;
+    display: block; 
+}
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    color: #C5A55A;
+    letter-spacing: 3px;
+    margin: 0 0 10px 0;
+}
+
+.section-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: #8A8D8F;
+    font-style: italic;
+    margin: 0;
+}
+
+.gold-divider {
+    width: 120px;
+    height: 2px;
+    background-color: #C5A55A;
+    margin: 15px auto 0 auto; /* Tengah sempurna */
+}
+
+/* Members Grid Layout */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 kolom rapi */
+    gap: 25px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Kartu Karakter */
+.member-card {
+    background-color: #1A1A1A;
+    border: 1px solid #2E2E2E;
+    transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.member-card:hover {
+    border-color: #C5A55A;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(197, 165, 90, 0.1);
+}
+
+/* Wadah Foto */
+.member-img-wrapper {
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+    border-bottom: 1px solid #2E2E2E;
+    background-color: #0D0D0D;
+    position: relative;
+}
+
+.member-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: 0.5s ease;
+}
+
+.member-card:hover .member-img {
+    transform: scale(1.05);
+}
+
+/* Informasi Karakter */
+.member-info {
+    padding: 20px;
+    flex-grow: 1;
+    background-color: #1A1A1A;
+}
+
+.member-name {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    color: #C5A55A;
+    margin: 0 0 5px 0;
+    letter-spacing: 1px;
+}
+
+.member-role {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    color: #8A8D8F;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.member-bio {
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    color: #8A8D8F;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (TAMPILAN HP & TABLET)
+   ========================================= */
+@media (max-width: 1200px) {
+    .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .faksi-hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    .faksi-meta-grid {
+        justify-content: center;
+        margin: 30px auto 0 auto;
+    }
+    .faksi-hero { background-position: center; }
+}
+
+@media (max-width: 650px) {
+    .faksi-title { font-size: 32px; }
+    .faksi-hero { padding: 40px 5%; }
+    .faksi-members-section { padding: 40px 5%; }
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+    .faksi-meta-grid {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+}

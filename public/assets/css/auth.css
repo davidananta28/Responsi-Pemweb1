@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Manrope:wght@400;600;700&display=swap');
+/* ==========================================================================
+   AUTH PAGES STYLES (LOGIN & REGISTER) - THE DRAGON REALM (NO SCROLL)
+   ========================================================================== */
+
+/* 1. Background Utama (Latar Belakang Mata Naga) */
+/* 1. Background Utama (Latar Belakang Mata Naga) */
+.auth-body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0D0D0D; /* Warna dasar hitam/gelap yang akan menembus gambar naga */
+    font-family: 'Manrope', sans-serif;
+    overflow: hidden; 
+    box-sizing: border-box;
+    position: relative; /* Penting untuk mengunci posisi gambar naga */
+}
+
+/* Layer Khusus Gambar Naga Agar Bisa Diatur Opacity-nya */
+.auth-body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('../img/background-naga.png') no-repeat center center / cover;
+    
+    /* ========================================================
+       ATUR OPACITY NAGA DI SINI
+       Nilainya 0.1 (sangat pudar) sampai 1.0 (sangat jelas)
+       ======================================================== */
+    opacity: 0.7; 
+    
+    z-index: 0; /* Menempatkan gambar naga di posisi paling belakang */
+}
+
+/* 2. Kartu Form Umum */
+.auth-card {
+    background-color: #0D0D0D;
+    border: 1px solid #C5A55A; 
+    width: 100%;
+    max-width: 460px; 
+    position: relative;
+    z-index: 1; /* SANGAT PENTING: Memastikan form tetap berada di atas naga */
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.95);
+}
+
+/* KHUSUS KARTU REGISTER (Lebih Lebar: 600px) */
+.register-card {
+    max-width: 600px;
+}
+
+/* 3. Header Atas (Padding dikurangi agar tidak memakan banyak tinggi layar) */
+.auth-header {
+    text-align: center;
+    padding: 35px 30px 25px 30px;
+    border-bottom: 1px solid #C5A55A;
+}
+
+.auth-header h2 {
+    font-family: 'Cinzel', serif;
+    color: #C5A55A; 
+    font-size: 24px;
+    letter-spacing: 3px;
+    margin: 0 0 10px 0;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.auth-header p.quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: #8A8D8F;
+    font-style: italic;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* 4. Area Form (Jarak / padding diperkecil agar pas 1 layar tanpa scroll) */
+.auth-form {
+    padding: 25px 45px 35px 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Jarak antar elemen dikurangi */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Jarak antara Label dan Kotak Input dikurangi */
+}
+
+/* Label Username & Password */
+.form-group label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #8A8D8F; 
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+/* 5. Kotak Input */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #1A1A1A; 
+    border: 1px solid #2E2E2E; 
+    border-radius: 4px;
+    padding: 0;
+    transition: 0.3s ease;
+}
+
+.input-wrapper:focus-within {
+    border-color: #C5A55A;
+}
+
+/* Pengaturan Ikon Gambar */
+.input-wrapper .icon {
+    position: absolute;
+    left: 15px;
+    width: 18px; 
+    height: 18px;
+    object-fit: contain; 
+    opacity: 0.9; /* Tetap terang sesuai permintaan */
+    transition: 0.3s ease;
+}
+
+.input-wrapper:focus-within .icon {
+    opacity: 1; 
+    transform: scale(1.1); 
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 13px 15px 13px 45px; /* Padding atas bawah dikurangi sedikit agar tinggi form menyusut */
+    background: transparent;
+    border: none;
+    color: #F0E8D0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    outline: none;
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
+}
+
+.input-wrapper input::placeholder {
+    color: #8A8D8F;
+    opacity: 0.7;
+}
+
+/* 6. Tombol Aksi */
+.btn-auth {
+    width: 100%;
+    background: transparent; 
+    border: 1px solid #C5A55A; 
+    color: #C5A55A; 
+    padding: 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s ease;
+    margin-top: 5px;
+    font-family: 'Cinzel', serif;
+}
+
+.btn-icon {
+    width: 18px; 
+    height: 18px;
+    object-fit: contain;
+    transition: 0.3s ease;
+}
+
+.btn-auth:hover {
+    background-color: #C5A55A;
+    color: #0D0D0D;
+}
+
+.btn-auth:hover .btn-icon {
+    filter: brightness(0.2); 
+}
+
+/* 7. Garis Pembatas "OR" */
+.or-divider {
+    position: relative;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.or-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #2E2E2E;
+    z-index: 1;
+}
+
+.or-divider span {
+    background-color: #0D0D0D; 
+    padding: 0 15px;
+    color: #F0E8D0;
+    font-size: 10px;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+    letter-spacing: 1px;
+}
+
+/* 8. Teks Footer */
+.auth-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auth-footer-link {
+    text-align: center;
+    font-size: 12px;
+    color: #8A8D8F; 
+    letter-spacing: 0.5px;
+}
+
+.auth-footer-link a {
+    color: #C5A55A; 
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Cinzel', serif;
+    transition: 0.2s ease;
+    margin-left: 5px;
+    letter-spacing: 1px;
+}
+
+.auth-footer-link a:hover {
+    color: #E4C377;
+    text-decoration: underline;
+}
+
+/* 9. Layout Grid Halaman Register */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* 10. Dekorasi Pedang */
+.sword-decor {
+    position: absolute;
+    bottom: -60px;
+    left: -160px;
+    width: 420px;
+    height: 220px;
+    background: url('../img/pedang.png') no-repeat center center / contain;
+    pointer-events: none;
+    z-index: 10;
+    transform: rotate(0deg); 
+    display: block; 
+}
+
+/* ==========================================================================
+   RESPONSIVE (TAMPILAN HP)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 15px; /* Mengurangi gap form row saat di HP agar tidak scroll */
+    }
+}
+
+@media (max-width: 600px) {
+    .auth-card {
+        max-width: 100%;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    .auth-form {
+        padding: 25px;
+    }
+    .auth-header {
+        padding: 30px 20px;
+    }
+    .sword-decor {
+        display: none; 
+    }
+}

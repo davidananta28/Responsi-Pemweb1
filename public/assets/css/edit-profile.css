@@ -1,0 +1,202 @@
+/* =========================================
+   EDIT PROFILE PAGE STYLES (GOT THEME)
+========================================= */
+
+.edit-profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  min-height: calc(100vh - 180px);
+  background-color: var(--bg-dark);
+}
+
+.edit-profile-card {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-dark);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  padding: 35px 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.edit-profile-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.edit-profile-header h2 {
+  font-family: var(--font-heading);
+  color: var(--accent);
+  font-size: 24px;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.edit-profile-header p {
+  font-family: var(--font-sub);
+  font-size: 14px;
+  color: var(--text-gray);
+  font-style: italic;
+}
+
+/* --- SEKSI UPLOAD FOTO --- */
+.avatar-upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.avatar-preview-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.current-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.change-avatar-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--accent);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid var(--bg-light);
+  transition: 0.3s;
+}
+
+.change-avatar-badge span {
+  font-size: 14px;
+  color: var(--bg-dark);
+}
+
+.change-avatar-badge:hover {
+  background-color: var(--accent-dark);
+  transform: scale(1.1);
+}
+
+.upload-note {
+  font-size: 11px;
+  color: var(--text-gray);
+}
+
+/* --- STYLING FORM INPUT --- */
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-gray);
+  font-weight: 600;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-dark);
+  border-radius: 4px;
+  color: var(--text-light);
+  font-family: var(--font-body);
+  font-size: 14px;
+  transition: 0.3s;
+  outline: none;
+}
+
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 5px rgba(197, 165, 90, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Khusus dropdown agar option-nya tidak putih polos */
+.input-wrapper select option {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+/* --- TOMBOL AKSI DI BAWAH --- */
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.btn-cancel,
+.btn-save {
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  text-align: center;
+  flex: 1;
+}
+
+.btn-cancel {
+  background-color: transparent;
+  border: 1px solid var(--border-dark);
+  color: var(--text-gray);
+}
+
+.btn-cancel:hover {
+  border-color: #d9534f;
+  color: #d9534f;
+}
+
+.btn-save {
+  background-color: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--bg-dark);
+  font-family: var(--font-body);
+}
+
+.btn-save:hover {
+  background-color: var(--accent-dark);
+  border-color: var(--accent-dark);
+  box-shadow: 0 4px 15px rgba(197, 165, 90, 0.4);
+}
+
+/* Responsif Mobile */
+@media (max-width: 480px) {
+  .edit-profile-card {
+    padding: 25px 20px;
+  }
+  .form-actions {
+    flex-direction: column-reverse; /* Batal di bawah, Simpan di atas saat mobile */
+    gap: 10px;
+  }
+}
