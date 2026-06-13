@@ -2,10 +2,8 @@
 session_start();
 $page = 'film';
 
-// --- LOGIKA PENGAMBILAN DATA ---
 include '../../../config/koneksi.php';
 $semua_film = mysqli_query($koneksi, "SELECT * FROM film ORDER BY id DESC");
-// -------------------------------
 
 include '../includes/header.php';
 ?>

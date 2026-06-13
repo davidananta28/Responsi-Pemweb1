@@ -6,7 +6,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 }
 $page = 'admin';
 
-// --- LOGIKA PENGAMBILAN DATA ---
 include '../../../config/koneksi.php';
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -17,7 +16,6 @@ if (!$anggota) {
 }
 
 $semua_faksi = mysqli_query($koneksi, "SELECT * FROM faksi ORDER BY nama_faksi ASC");
-// -------------------------------
 include '../includes/header.php';
 ?>
 

@@ -1,31 +1,24 @@
 <?php
 session_start();
 
-// Proteksi halaman, hanya admin yang boleh masuk
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../home/index.php");
     exit;
 }
 $page = 'admin';
 
-// --- LOGIKA PENGAMBILAN DATA (SEMI-MVC) ---
 include '../../../config/koneksi.php';
 
-// Menangkap ID dari URL
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Mengambil data anggota berdasarkan ID
 $anggota = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM anggota_faksi WHERE id='$id'"));
 
-// Jika data tidak ditemukan, kembalikan ke halaman admin
 if (!$anggota) {
     header("Location: admin.php#kelola-anggota");
     exit;
 }
 
-// Mengambil daftar faksi untuk dropdown
 $semua_faksi = mysqli_query($koneksi, "SELECT * FROM faksi ORDER BY nama_faksi ASC");
-// ------------------------------------------
 
 include '../includes/header.php';
 ?>
@@ -93,7 +86,6 @@ include '../includes/header.php';
 </div>
 
 <script>
-    // Fungsi Live Preview untuk Foto Karakter
     document.getElementById('foto-input').addEventListener('change', function(event) {
         const file = event.target.files[0];
         if (file) {

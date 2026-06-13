@@ -1,17 +1,13 @@
 <?php
 session_start();
-// Proteksi halaman, hanya admin yang boleh masuk
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../home/index.php");
     exit;
 }
 $page = 'admin';
 
-// --- LOGIKA PENGAMBILAN DATA (MVC) ---
 include '../../../config/koneksi.php';
-// Ambil daftar faksi untuk dropdown
 $semua_faksi = mysqli_query($koneksi, "SELECT * FROM faksi ORDER BY nama_faksi ASC");
-// -------------------------------------
 
 include '../includes/header.php';
 ?>

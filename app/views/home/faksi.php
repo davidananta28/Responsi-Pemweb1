@@ -2,10 +2,8 @@
 session_start();
 $page = 'faksi';
 
-// --- LOGIKA PENGAMBILAN DATA ---
 include '../../../config/koneksi.php';
 $semua_faksi = mysqli_query($koneksi, "SELECT * FROM faksi ORDER BY id ASC");
-// -------------------------------
 
 include '../includes/header.php';
 ?>

@@ -1,5 +1,4 @@
 <?php
-// app/models/AdminModel.php
 
 class AdminModel
 {
@@ -10,7 +9,6 @@ class AdminModel
         $this->db = $koneksi;
     }
 
-    // Mengambil total angka untuk Dashboard
     public function getDashboardStats()
     {
         $film  = mysqli_fetch_assoc(mysqli_query($this->db, "SELECT COUNT(*) as total FROM film"))['total'];
@@ -24,7 +22,6 @@ class AdminModel
         ];
     }
 
-    // Mengambil data Episode beserta Nama Season/Film-nya (JOIN)
     public function getAllEpisodeDetail()
     {
         $query = "SELECT episode.*, film.judul AS nama_film 
@@ -34,7 +31,6 @@ class AdminModel
         return mysqli_query($this->db, $query);
     }
 
-    // Mengambil data Anggota beserta Nama Faksi-nya (JOIN)
     public function getAllAnggotaDetail()
     {
         $query = "SELECT anggota_faksi.*, faksi.nama_faksi 
@@ -44,7 +40,6 @@ class AdminModel
         return mysqli_query($this->db, $query);
     }
 
-    // Mengambil data User beserta Faksi favoritnya (JOIN)
     public function getAllUserDetail()
     {
         $query = "SELECT users.*, faksi.nama_faksi 
@@ -54,10 +49,8 @@ class AdminModel
         return mysqli_query($this->db, $query);
     }
 
-    // Menambahkan faksi baru ke database
     public function tambahFaksi($nama_faksi, $motto, $wilayah, $senjata, $deskripsi, $poster)
     {
-        // Hindari SQL Injection
         $nama_faksi = mysqli_real_escape_string($this->db, $nama_faksi);
         $motto      = mysqli_real_escape_string($this->db, $motto);
         $wilayah    = mysqli_real_escape_string($this->db, $wilayah);
@@ -70,7 +63,6 @@ class AdminModel
         return mysqli_query($this->db, $query);
     }
 
-    // Memperbarui data faksi yang sudah ada
     public function editFaksi($id, $nama_faksi, $motto, $wilayah, $senjata, $deskripsi, $poster)
     {
         $id         = intval($id); // Pastikan ID berupa angka
@@ -118,9 +110,6 @@ class AdminModel
         return mysqli_query($this->db, $query);
     }
 
-    // ==========================================
-    // HAPUS DATA
-    // ==========================================
     public function hapusFaksi($id)
     {
         $id = intval($id);
@@ -130,7 +119,6 @@ class AdminModel
     public function hapusFilm($id)
     {
         $id = intval($id);
-        // Hapus juga episode-episode yang terkait dengan film ini
         mysqli_query($this->db, "DELETE FROM episode WHERE id_film='$id'");
         return mysqli_query($this->db, "DELETE FROM film WHERE id='$id'");
     }
@@ -141,9 +129,6 @@ class AdminModel
         return mysqli_query($this->db, "DELETE FROM users WHERE id='$id' AND role != 'admin'");
     }
 
-    // ==========================================
-    // ANGGOTA FAKSI (CRUD)
-    // ==========================================
     public function getAnggotaById($id)
     {
         $id = intval($id);
@@ -186,9 +171,6 @@ class AdminModel
         return mysqli_query($this->db, "DELETE FROM anggota_faksi WHERE id='$id'");
     }
 
-    // ==========================================
-    // EPISODE (CRUD)
-    // ==========================================
     public function getEpisodeById($id)
     {
         $id = intval($id);

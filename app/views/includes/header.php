@@ -1,5 +1,4 @@
 <?php
-// Pastikan session dimulai agar kita bisa membaca $_SESSION['role']
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -7,7 +6,6 @@ if (session_status() === PHP_SESSION_NONE) {
 if (!isset($page)) {
     $page = 'beranda';
 }
-// Hide header on auth pages
 if ($page != 'login' && $page != 'register'):
 ?>
     <!DOCTYPE html>

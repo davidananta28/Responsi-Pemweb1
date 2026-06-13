@@ -13,14 +13,12 @@ class FilmModel
         return mysqli_query($this->db, "SELECT * FROM film ORDER BY id DESC");
     }
 
-    // Fungsi baru untuk beranda (hanya ambil 3)
     public function getLimitFilm($limit)
     {
         $limit = intval($limit);
         return mysqli_query($this->db, "SELECT * FROM film ORDER BY id DESC LIMIT $limit");
     }
 
-    // Mengambil satu data film berdasarkan ID
     public function getFilmById($id)
     {
         $id = intval($id);

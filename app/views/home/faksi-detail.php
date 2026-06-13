@@ -14,7 +14,6 @@ if (!$faksi) {
     exit;
 }
 
-// Ambil anggota yang terafiliasi dengan id_faksi ini
 $query_anggota = mysqli_query($koneksi, "SELECT * FROM anggota_faksi WHERE id_faksi = '$id'");
 
 include '../includes/header.php';

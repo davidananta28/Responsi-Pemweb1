@@ -14,7 +14,6 @@ class FaksiModel
         return mysqli_query($this->db, $query);
     }
 
-    // Mengambil satu data faksi berdasarkan ID
     public function getFaksiById($id)
     {
         $id = intval($id);

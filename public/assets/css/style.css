@@ -124,6 +124,14 @@ body {
     display: block;
 }
 
+.card a,
+.card a:visited,
+.card a:hover,
+.card a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
 .card-title {
     padding: 12px 8px;
     text-align: center;

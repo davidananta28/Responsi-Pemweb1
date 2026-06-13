@@ -1,16 +1,6 @@
--- =========================================================
--- DATABASE: got_db
--- Game of Thrones Web Project
--- Import file ini lewat phpMyAdmin (XAMPP/Laragon) sebelum
--- menjalankan aplikasi.
--- =========================================================
-
 CREATE DATABASE IF NOT EXISTS got_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE got_db;
 
--- ---------------------------------------------------------
--- Tabel: users
--- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS users (
     id INT(11) NOT NULL AUTO_INCREMENT,
     nama_lengkap VARCHAR(100) NOT NULL,
@@ -26,9 +16,6 @@ CREATE TABLE IF NOT EXISTS users (
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ---------------------------------------------------------
--- Tabel: faksi (House / Great Houses)
--- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS faksi (
     id INT(11) NOT NULL AUTO_INCREMENT,
     nama_faksi VARCHAR(100) NOT NULL,
@@ -40,9 +27,6 @@ CREATE TABLE IF NOT EXISTS faksi (
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ---------------------------------------------------------
--- Tabel: film (Season / Series)
--- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS film (
     id INT(11) NOT NULL AUTO_INCREMENT,
     judul VARCHAR(150) NOT NULL,
@@ -60,9 +44,6 @@ CREATE TABLE IF NOT EXISTS film (
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ---------------------------------------------------------
--- Tabel: episode
--- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS episode (
     id INT(11) NOT NULL AUTO_INCREMENT,
     id_film INT(11) NOT NULL,
@@ -77,9 +58,6 @@ CREATE TABLE IF NOT EXISTS episode (
     CONSTRAINT fk_episode_film FOREIGN KEY (id_film) REFERENCES film (id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ---------------------------------------------------------
--- Tabel: anggota_faksi (Karakter / Member House)
--- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS anggota_faksi (
     id INT(11) NOT NULL AUTO_INCREMENT,
     id_faksi INT(11) DEFAULT 0,
@@ -91,15 +69,9 @@ CREATE TABLE IF NOT EXISTS anggota_faksi (
     KEY id_faksi (id_faksi)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- =========================================================
--- SEED DATA
--- =========================================================
-
--- Admin default (username: admin / password: admin123)
 INSERT INTO users (nama_lengkap, username, email, password, role, gelar, kutipan, id_faksi) VALUES
 ('Hand of the King', 'admin', 'admin@westeros.com', '$2y$10$7VYMQCgee6lzPmqkj9jgMeNCVRpapP/kmCBH/vKJb8kW69ghDWQmu', 'admin', 'Hand of the King', 'Winter is Coming', 0);
 
--- Faksi / Great Houses
 INSERT INTO faksi (nama_faksi, motto, wilayah, senjata, deskripsi, poster) VALUES
 ('House Stark', 'Winter is Coming', 'The North', 'Ice (Greatsword)', 'House Stark adalah salah satu Great House tertua di Westeros, menguasai wilayah The North dari benteng kuno mereka, Winterfell. Dikenal karena kehormatan dan kesetiaan terhadap nilai-nilai kuno.', 'stark.png'),
 ('House Lannister', 'Hear Me Roar', 'The Westerlands', 'Brightroar', 'House Lannister adalah salah satu keluarga paling kaya di Tujuh Kerajaan, menguasai The Westerlands dengan tambang emas yang melimpah dari Casterly Rock.', 'lannister.png'),
@@ -111,17 +83,14 @@ INSERT INTO faksi (nama_faksi, motto, wilayah, senjata, deskripsi, poster) VALUE
 ('House Tyrell', 'Growing Strong', 'The Reach', 'Various Blades', 'House Tyrell menguasai The Reach dari Highgarden, salah satu wilayah paling subur dan kaya di Westeros, terkenal lewat kelicikan politik.', 'tyrell.png'),
 ('House Arryn', 'As High as Honor', 'The Vale', 'Various Blades', 'House Arryn menguasai The Vale of Arryn dari benteng tak tertembus Eyrie, salah satu Great House tertua yang masih berdiri sejak Age of Heroes.', 'arryn.png');
 
--- Film / Season
 INSERT INTO film (judul, kategori, durasi, tahun, rating, peringatan, pemeran, genre, tags, sinopsis, poster, banner_hero) VALUES
 ('Game of Thrones: Season 1', 'TV Series', '10 Episode', 2011, '9.1', '18+ (Kekerasan Intens, Konten Dewasa)', 'Emilia Clarke, Kit Harington, Peter Dinklage, Sean Bean', 'Fantasy, Drama, Action', 'Game of Thrones, Westeros', 'Sembilan keluarga bangsawan berjuang untuk menguasai tanah Westeros yang penuh intrik dan pengkhianatan, sementara ancaman kuno bangkit dari balik The Wall.', 'got.png', 'background-naga.png'),
 ('House of the Dragon: Season 1', 'TV Series', '10 Episode', 2022, '8.4', '18+ (Kekerasan Intens, Konten Dewasa)', 'Matt Smith, Emma D''Arcy, Paddy Considine, Olivia Cooke', 'Fantasy, Drama, Action', 'House of the Dragon, Targaryen', 'Kisah perpecahan House Targaryen 200 tahun sebelum kelahiran Daenerys, yang memicu perang saudara berdarah dikenal sebagai Dance of the Dragons.', 'hod.png', 'background-naga.png');
 
--- Episode (Game of Thrones Season 1 - id_film = 1)
 INSERT INTO episode (id_film, eps_num, durasi, judul_eps, video_url, thumbnail, deskripsi) VALUES
 (1, 1, '1j 2m', 'Winter Is Coming', 'https://www.youtube.com/watch?v=KPLWWIOCOOQ', 'placeholder.jpg', 'Lord Eddard Stark dipanggil ke King''s Landing untuk menjadi Hand of the King, sementara di Utara, sebuah ancaman kuno mulai bangkit dari balik The Wall.'),
 (1, 2, '56m', 'The Kingsroad', 'https://www.youtube.com/watch?v=KPLWWIOCOOQ', 'placeholder.jpg', 'Keluarga Stark berpisah menuju tujuan masing-masing, sementara Jon Snow memulai perjalanannya ke Night''s Watch.');
 
--- Anggota Faksi (contoh karakter)
 INSERT INTO anggota_faksi (id_faksi, nama_karakter, gelar, foto_karakter, bio) VALUES
 (1, 'Eddard Stark', 'Lord of Winterfell, Warden of the North', 'placeholder.jpg', 'Eddard "Ned" Stark adalah Lord Winterfell yang dikenal akan kejujuran dan kehormatannya yang tak tergoyahkan, bahkan ketika hal itu membahayakan dirinya sendiri.'),
 (1, 'Jon Snow', 'Lord Commander of the Night''s Watch', 'placeholder.jpg', 'Putra tidak sah (atau begitulah yang diyakini) dari Eddard Stark, Jon Snow tumbuh di Winterfell sebelum bergabung dengan Night''s Watch untuk menjaga The Wall.'),

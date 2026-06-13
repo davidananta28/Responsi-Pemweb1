@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Proteksi: harus login
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../auth/login.php");
     exit;
@@ -18,9 +17,6 @@ if (isset($_POST['edit_profile'])) {
     $email        = mysqli_real_escape_string($koneksi, $_POST['email']);
     $id_faksi     = intval($_POST['id_faksi']);
 
-    // ==========================================
-    // PROSES UPLOAD FOTO PROFIL (jika ada foto baru)
-    // ==========================================
     $foto_lama = $_POST['foto_lama'];
     $foto_profil = $foto_lama;
 
@@ -32,7 +28,6 @@ if (isset($_POST['edit_profile'])) {
 
         if (in_array($imageFileType, ['jpg', 'jpeg', 'png'])) {
             if (move_uploaded_file($_FILES['foto_profil']['tmp_name'], $target_file)) {
-                // Hapus foto lama jika bukan foto default
                 if (!empty($foto_lama) && $foto_lama != 'profile.png' && file_exists($target_dir . $foto_lama)) {
                     unlink($target_dir . $foto_lama);
                 }
@@ -41,9 +36,6 @@ if (isset($_POST['edit_profile'])) {
         }
     }
 
-    // ==========================================
-    // VALIDASI: Cek apakah username/email sudah dipakai user lain
-    // ==========================================
     $cek = mysqli_query($koneksi, "SELECT id FROM users WHERE (username='$username' OR email='$email') AND id != '$id_user'");
     if (mysqli_num_rows($cek) > 0) {
         $_SESSION['error'] = "Username atau Email sudah digunakan penghuni Realm lain!";
@@ -51,9 +43,6 @@ if (isset($_POST['edit_profile'])) {
         exit;
     }
 
-    // ==========================================
-    // UPDATE DATA PROFIL
-    // ==========================================
     $query = "UPDATE users SET 
               nama_lengkap='$nama_lengkap', 
               gelar='$gelar', 
@@ -65,7 +54,6 @@ if (isset($_POST['edit_profile'])) {
               WHERE id='$id_user'";
 
     if (mysqli_query($koneksi, $query)) {
-        // Perbarui session username (digunakan di header)
         $_SESSION['username'] = $username;
         $_SESSION['success'] = "Profil berhasil diperbarui!";
         header("Location: profile.php");
@@ -77,6 +65,5 @@ if (isset($_POST['edit_profile'])) {
     }
 }
 
-// Jika diakses langsung tanpa submit form
 header("Location: profile.php");
 exit;

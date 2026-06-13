@@ -2,13 +2,10 @@
 session_start();
 $page = 'beranda';
 
-// --- LOGIKA PENGAMBILAN DATA ---
 include '../../../config/koneksi.php';
 
-// Langsung ambil data dari database (Maksimal 5 faksi dan 3 film)
 $faksi_beranda = mysqli_query($koneksi, "SELECT * FROM faksi ORDER BY id ASC LIMIT 5");
 $film_beranda  = mysqli_query($koneksi, "SELECT * FROM film ORDER BY id DESC LIMIT 3");
-// -------------------------------
 
 include '../includes/header.php';
 ?>

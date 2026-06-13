@@ -5,7 +5,6 @@ $page = 'film-detail';
 include '../../../config/koneksi.php';
 include '../../models/FilmModel.php';
 
-// Ambil ID dari URL
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 $filmModel = new FilmModel($koneksi);
@@ -16,7 +15,6 @@ if (!$film) {
     exit;
 }
 
-// Ambil episode dari database berdasarkan id_film
 $query_eps = mysqli_query($koneksi, "SELECT * FROM episode WHERE id_film = '$id' ORDER BY eps_num ASC");
 
 include '../includes/header.php';

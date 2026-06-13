@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Proteksi: harus login
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../auth/login.php");
     exit;
@@ -9,7 +8,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $page = 'profile';
 
-// --- LOGIKA PENGAMBILAN DATA ---
 include '../../../config/koneksi.php';
 $id_user = intval($_SESSION['user_id']);
 
@@ -22,7 +20,6 @@ if (!$user) {
     header("Location: ../auth/logout.php");
     exit;
 }
-// -------------------------------
 
 include '../includes/header.php';
 ?>

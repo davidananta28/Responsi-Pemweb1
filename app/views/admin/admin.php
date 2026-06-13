@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// --- PROTEKSI KEAMANAN ---
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../home/index.php");
     exit;
@@ -9,25 +8,21 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 
 $page = 'admin';
 
-// --- PENERAPAN KONSEP MVC (MODEL PEMANGGIL) ---
 include '../../../config/koneksi.php';
 include '../../models/FilmModel.php';
 include '../../models/FaksiModel.php';
 include '../../models/AdminModel.php';
 
-// 1. Inisialisasi Model
 $filmModel  = new FilmModel($koneksi);
 $faksiModel = new FaksiModel($koneksi);
 $adminModel = new AdminModel($koneksi);
 
-// 2. Ambil Data dari Model
 $stats         = $adminModel->getDashboardStats();
 $semua_film    = $filmModel->getAllFilm();
 $semua_faksi   = $faksiModel->getAllFaksi();
 $semua_episode = $adminModel->getAllEpisodeDetail();
 $semua_anggota = $adminModel->getAllAnggotaDetail();
 $semua_user    = $adminModel->getAllUserDetail();
-// ----------------------------------------------
 
 include '../includes/header.php';
 ?>

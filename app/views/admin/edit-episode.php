@@ -6,7 +6,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 }
 $page = 'admin';
 
-// --- LOGIKA PENGAMBILAN DATA ---
 include '../../../config/koneksi.php';
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -17,7 +16,6 @@ if (!$eps) {
 }
 
 $semua_film = mysqli_query($koneksi, "SELECT id, judul FROM film ORDER BY id DESC");
-// -------------------------------
 include '../includes/header.php';
 ?>
 

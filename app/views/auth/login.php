@@ -1,6 +1,5 @@
 <?php
 session_start();
-// Redirect ke home jika sudah login
 if (isset($_SESSION['user_id'])) {
     header("Location: ../home/index.php");
     exit;

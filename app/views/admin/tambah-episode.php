@@ -6,11 +6,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 }
 $page = 'admin';
 
-// --- LOGIKA PENGAMBILAN DATA (MVC) ---
 include '../../../config/koneksi.php';
-// Ambil daftar film/season untuk dropdown
 $semua_film = mysqli_query($koneksi, "SELECT id, judul FROM film ORDER BY id DESC");
-// -------------------------------------
 
 include '../includes/header.php';
 ?>

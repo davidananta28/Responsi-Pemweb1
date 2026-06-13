@@ -1,21 +1,16 @@
 <?php
 session_start();
 
-// Proteksi akses admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../views/home/index.php");
     exit;
 }
 
-// Panggil Koneksi dan Model
 include '../../config/koneksi.php';
 include '../models/AdminModel.php';
 
 $adminModel = new AdminModel($koneksi);
 
-// ==========================================
-// FUNGSI UPLOAD GAMBAR
-// ==========================================
 function uploadGambar($file, $target_dir = "../../../public/assets/img/")
 {
     if (!isset($file) || $file['error'] !== UPLOAD_ERR_OK) {
@@ -26,7 +21,6 @@ function uploadGambar($file, $target_dir = "../../../public/assets/img/")
     $target_file = $target_dir . $nama_file;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    // Validasi format
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
         return false;
     }
@@ -37,48 +31,35 @@ function uploadGambar($file, $target_dir = "../../../public/assets/img/")
     return false;
 }
 
-// ==========================================
-// FUNGSI UPDATE GAMBAR (UNTUK PROSES EDIT)
-// ==========================================
 function sistemUpdateGambar($file, $gambar_lama, $target_dir = "../../../public/assets/img/")
 {
     $gambar_baru = uploadGambar($file, $target_dir);
 
-    // Jika ada gambar baru yang berhasil diupload
     if ($gambar_baru) {
-        // Hapus file lama dari folder server (kecuali jika itu gambar default/placeholder)
         if (!empty($gambar_lama) && $gambar_lama != 'placeholder.jpg' && file_exists($target_dir . $gambar_lama)) {
             unlink($target_dir . $gambar_lama);
         }
         return $gambar_baru;
     }
 
-    // Jika admin tidak mengupload foto baru, kembalikan nama foto yang lama
     return $gambar_lama;
 }
 
-// ==========================================
-// PROSES TAMBAH FAKSI
-// ==========================================
 if (isset($_POST['tambah_faksi'])) {
-    // Tangkap data dari form
     $nama_faksi = $_POST['nama_faksi'];
     $motto      = $_POST['motto'];
     $wilayah    = $_POST['wilayah'];
     $senjata    = $_POST['senjata'];
     $deskripsi  = $_POST['deskripsi'];
 
-    // Upload Poster
     $poster = uploadGambar($_FILES['poster']);
     if (!$poster) {
         $poster = 'placeholder.jpg'; // Gambar default jika gagal upload
     }
 
-    // Panggil Model untuk simpan ke database
     $simpan = $adminModel->tambahFaksi($nama_faksi, $motto, $wilayah, $senjata, $deskripsi, $poster);
 
     if ($simpan) {
-        // Jika sukses, kembalikan ke halaman admin bagian tab Faksi
         header("Location: ../views/admin/admin.php#kelola-faksi");
         exit;
     } else {
@@ -86,9 +67,6 @@ if (isset($_POST['tambah_faksi'])) {
     }
 }
 
-// ==========================================
-// PROSES EDIT FAKSI / HOUSE
-// ==========================================
 if (isset($_POST['edit_faksi'])) {
     $id         = intval($_POST['id']);
     $nama_faksi = $_POST['nama_faksi'];
@@ -99,7 +77,6 @@ if (isset($_POST['edit_faksi'])) {
 
     $poster_lama = $_POST['poster_lama'];
 
-    // Gunakan fungsi sistemUpdateGambar agar kalau admin tidak upload foto baru, foto lama tetap aman
     $poster = sistemUpdateGambar($_FILES['poster'], $poster_lama);
 
     $simpan = $adminModel->editFaksi($id, $nama_faksi, $motto, $wilayah, $senjata, $deskripsi, $poster);
@@ -112,9 +89,6 @@ if (isset($_POST['edit_faksi'])) {
     }
 }
 
-// ==========================================
-// PROSES TAMBAH FILM / SEASON
-// ==========================================
 if (isset($_POST['tambah_film'])) {
     $judul    = $_POST['judul'];
     $durasi   = $_POST['durasi']; // Berisi 'Jumlah Episode'
@@ -141,9 +115,6 @@ if (isset($_POST['tambah_film'])) {
     }
 }
 
-// ==========================================
-// PROSES EDIT FILM / SEASON
-// ==========================================
 if (isset($_POST['edit_film'])) {
     $id       = intval($_POST['id']);
     $judul    = $_POST['judul'];
@@ -167,9 +138,6 @@ if (isset($_POST['edit_film'])) {
     }
 }
 
-// ==========================================
-// PROSES TAMBAH ANGGOTA FAKSI
-// ==========================================
 if (isset($_POST['tambah_anggota'])) {
     $nama_karakter = $_POST['nama_karakter'];
     $gelar         = $_POST['gelar'];
@@ -191,9 +159,6 @@ if (isset($_POST['tambah_anggota'])) {
     }
 }
 
-// ==========================================
-// PROSES EDIT ANGGOTA FAKSI
-// ==========================================
 if (isset($_POST['edit_anggota'])) {
     $id            = intval($_POST['id']);
     $nama_karakter = $_POST['nama_karakter'];
@@ -214,9 +179,6 @@ if (isset($_POST['edit_anggota'])) {
     }
 }
 
-// ==========================================
-// PROSES TAMBAH EPISODE
-// ==========================================
 if (isset($_POST['tambah_episode'])) {
     $id_film   = $_POST['id_film'];
     $eps_num   = $_POST['eps_num'];
@@ -240,9 +202,6 @@ if (isset($_POST['tambah_episode'])) {
     }
 }
 
-// ==========================================
-// PROSES EDIT EPISODE
-// ==========================================
 if (isset($_POST['edit_episode'])) {
     $id        = intval($_POST['id']);
     $id_film   = $_POST['id_film'];
@@ -265,9 +224,6 @@ if (isset($_POST['edit_episode'])) {
     }
 }
 
-// ==========================================
-// PROSES HAPUS DATA (via link tombol Hapus)
-// ==========================================
 if (isset($_GET['hapus']) && isset($_GET['id'])) {
     $tipe = $_GET['hapus'];
     $id   = intval($_GET['id']);

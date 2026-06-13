@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Panggil koneksi dan model (Perhatikan arah mundur foldernya)
 include '../../config/koneksi.php';
 include '../models/UserModel.php';
 
@@ -14,7 +13,6 @@ class AuthController
         $this->userModel = new UserModel($koneksi);
     }
 
-    // Aksi Register
     public function register()
     {
         if (isset($_POST['register'])) {
@@ -24,14 +22,12 @@ class AuthController
             $password = $_POST['password'];
             $confirm  = $_POST['confirm_password'];
 
-            // Validasi Password
             if ($password !== $confirm) {
                 $_SESSION['error'] = "Password konfirmasi tidak cocok!";
                 header("Location: ../views/auth/register.php");
                 exit;
             }
 
-            // Panggil Model
             $proses = $this->userModel->register($fullname, $username, $email, $password);
 
             if ($proses === true) {
@@ -45,23 +41,19 @@ class AuthController
         }
     }
 
-    // Aksi Login
     public function login()
     {
         if (isset($_POST['login'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
 
-            // Panggil Model
             $user = $this->userModel->login($username, $password);
 
             if ($user) {
-                // Set Sesi Login
                 $_SESSION['user_id']  = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role']     = $user['role'];
 
-                // Redirect berdasarkan Role
                 if ($user['role'] == 'admin') {
                     header("Location: ../views/admin/admin.php");
                 } else {
@@ -75,7 +67,6 @@ class AuthController
         }
     }
 
-    // Aksi Logout
     public function logout()
     {
         session_unset();
@@ -85,12 +76,8 @@ class AuthController
     }
 }
 
-// =======================================================
-// ROUTING SEDERHANA CONTROLLER
-// =======================================================
 $auth = new AuthController($koneksi);
 
-// Tangkap 'action' dari URL untuk menentukan fungsi mana yang dijalankan
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'register') {
         $auth->register();

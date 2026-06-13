@@ -6,7 +6,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 }
 $page = 'admin';
 
-// --- LOGIKA PENGAMBILAN DATA ---
 include '../../../config/koneksi.php';
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -15,7 +14,6 @@ if (!$film) {
     header("Location: admin.php#kelola-film");
     exit;
 }
-// -------------------------------
 include '../includes/header.php';
 ?>
 <link rel="stylesheet" href="../../../public/assets/css/form-admin.css">

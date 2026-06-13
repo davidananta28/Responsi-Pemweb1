@@ -6,13 +6,11 @@ if (!isset($_SESSION['user_id'])) {
 }
 $page = 'profile';
 
-// --- LOGIKA PENGAMBILAN DATA ---
 include '../../../config/koneksi.php';
 $id_user = $_SESSION['user_id'];
 
 $user = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM users WHERE id='$id_user'"));
 $semua_faksi = mysqli_query($koneksi, "SELECT * FROM faksi ORDER BY nama_faksi ASC");
-// -------------------------------
 include '../includes/header.php';
 ?>
 
